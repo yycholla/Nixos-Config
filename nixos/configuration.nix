@@ -1,26 +1,28 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ inputs, config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
       yycholla = import ./home.nix;
     };
   };
   nix.settings.experimental-features = [
-	"nix-command" 
-	"flakes"
-	];
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,12 +58,12 @@
 
   # Enable the X11 windowing system.
   services.xserver = {
-	enable = true;
-	videoDrivers = ["nvidia"];
-	displayManager.gdm = {
-	enable = true;
-	wayland = true;
-	};
+    enable = true;
+    videoDrivers = ["nvidia"];
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
   };
 
   # Enable the GNOME Desktop Environment.
@@ -100,34 +102,34 @@
   users.users.yycholla = {
     isNormalUser = true;
     description = "Colin Hanway";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
   programs.hyprland = {
-	enable = true;
-	xwayland.enable = true;
+    enable = true;
+    xwayland.enable = true;
   };
   environment.sessionVariables = {
-	# if no cursor
-	# WLR_NO_HARDWARE_CURSORS = "1";
-	NIXOS_OZONE_WL = "1";
+    # if no cursor
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
   hardware = {
-  	graphics.enable = true;
-	# opengl.enable = true;
-	nvidia = {
-		modesetting.enable = true;
-		powerManagement.enable = false;
-		powerManagement.finegrained = false;
-		open = false;
-		nvidiaSettings = true;
-		package = config.boot.kernelPackages.nvidiaPackages.stable;
-	};
+    graphics.enable = true;
+    # opengl.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 
   # Allow unfree packages
@@ -136,15 +138,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	neovim
-	git
-	gh
-  	kitty
-	rofi-wayland
-	swww
-	pkgs.home-manager
-	stremio
-  	
+    neovim
+    git
+    gh
+    kitty
+    rofi-wayland
+    swww
+    pkgs.home-manager
+    pkgs.alejandra
+    stremio
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -174,5 +176,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "yycholla";
@@ -76,6 +78,7 @@
     userEmail = "hanway.colin@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
+      credential.helper = "oauth";
     };
   };
   # Let Home Manager install and manage itself.
