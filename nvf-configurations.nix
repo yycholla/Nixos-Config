@@ -7,13 +7,20 @@
     enable = true;
     settings = {
       vim = {
+        autopairs.nvim-autopairs.enable = true;
         theme = {
           enable = true;
           name = "catppuccin";
           style = "mocha";
+          transparent = true;
         };
 
-        statusline.lualine.enable = true;
+        statusline = {
+          lualine = {
+            enable = true;
+            theme = "catppuccin";
+          };
+        };
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
         lsp = {
@@ -22,6 +29,8 @@
         languages = {
           enableLSP = true;
           enableTreesitter = true;
+          enableFormat = true;
+          enableExtraDiagnostics = true;
 
           nix.enable = true;
           ts.enable = true;
