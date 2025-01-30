@@ -1,3 +1,4 @@
+#
 {
   description = "A very basic flake";
 
@@ -22,7 +23,7 @@
     nvf,
     ...
   } @ inputs: {
-    nixosConfigurations.yycholla-nix = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.yycholla-nixd = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
 
@@ -35,7 +36,7 @@
           home-manager.backupFileExtension = "HMBackup";
           home-manager.useUserPackages = true;
           home-manager.users.yycholla.imports = [
-            ./home.nix
+            ../home.nix
             catppuccin.homeManagerModules.catppuccin
           ];
           home-manager.extraSpecialArgs = {

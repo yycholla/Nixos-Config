@@ -1,3 +1,4 @@
+#
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -11,14 +12,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
-    ./packages.nix
-    ./nvf-configurations.nix
+    ../packages.nix
+    ../nvf-configurations.nix
   ];
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
-      yycholla = import ./home.nix;
+      yycholla = import ../home.nix;
     };
   };
   nix.settings.experimental-features = [
@@ -33,7 +34,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "yycholla-nix"; # Define your hostname.
+  networking.hostName = "yycholla-nixd"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -65,7 +66,7 @@
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
+      # videoDrivers = ["nvidia"];
       displayManager.gdm = {
         enable = true;
         wayland = true;
@@ -125,14 +126,14 @@
   hardware = {
     graphics.enable = true;
     # opengl.enable = true;
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
+    # nvidia = {
+    # modesetting.enable = true;
+    # powerManagement.enable = false;
+    # powerManagement.finegrained = false;
+    # open = false;
+    # nvidiaSettings = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # };
   };
 
   # Allow unfree packages
