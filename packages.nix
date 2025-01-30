@@ -7,7 +7,6 @@
     rofi-wayland
     swww
     pkgs.home-manager
-    pkgs.hyprpanel
     pkgs.alejandra
     stremio
     vscode

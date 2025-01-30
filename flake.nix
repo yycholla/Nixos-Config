@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     catppuccin.url = "github:catppuccin/nix";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     nvf.url = "github:notashelf/nvf";
@@ -20,7 +19,6 @@
     catppuccin,
     home-manager,
     zen-browser,
-    hyprpanel,
     nvf,
     ...
   } @ inputs: {
@@ -32,7 +30,6 @@
         nvf.nixosModules.default
         ./configuration.nix
         catppuccin.nixosModules.catppuccin
-        {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
         {
           home-manager.useGlobalPkgs = true;
           home-manager.backupFileExtension = "HMBackup";
