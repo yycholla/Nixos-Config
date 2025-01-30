@@ -16,7 +16,9 @@
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
-
+        lsp = {
+          formatOnSave = true;
+        };
         languages = {
           enableLSP = true;
           enableTreesitter = true;

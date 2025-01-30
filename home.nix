@@ -89,6 +89,13 @@
         theme = "robbyrussell";
       };
     };
+    waybar = {
+      settings = {
+        mainBar = {
+          layer = "top";
+        };
+      };
+    };
   };
   # Catpussy thing
   catppuccin = {
