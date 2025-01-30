@@ -3,6 +3,7 @@
     #  neovim
     git
     gh
+    waybar
     kitty
     rofi-wayland
     swww
