@@ -78,14 +78,14 @@
         update = "~/mysystem/nixos-rebuild.sh";
       };
       history.size = 10000;
-      #ohMyZsh = {
-      #  enable = true;
-      #  plugins = [
-      #    "git"
-      #    "thefuck"
-      #  ];
-      #  theme = "robbyrussell";
-      #};
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "git"
+          "thefuck"
+        ];
+        theme = "robbyrussell";
+      };
     };
   };
   # Catpussy thing
