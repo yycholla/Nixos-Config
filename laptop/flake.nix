@@ -1,3 +1,4 @@
+#
 {
   description = "A very basic flake";
 
@@ -29,15 +30,16 @@
       modules = [
         nvf.nixosModules.default
         ./configuration.nix
+
         catppuccin.nixosModules.catppuccin
+        home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.backupFileExtension = "HMBackup";
-          home-manager.useUserPackages = true;
-          home-manager.users.yycholla.imports = [
-            ./home.nix
-            catppuccin.homeManagerModules.catppuccin
-          ];
+          home-manager.users.yycholla = {
+            imports = [
+              ../home.nix
+              catppuccin.homeManagerModules.catppuccin
+            ];
+          };
           home-manager.extraSpecialArgs = {
             inherit inputs;
             system = "x86_64-linux";
