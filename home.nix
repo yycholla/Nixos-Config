@@ -21,6 +21,8 @@
     oh-my-posh
     inputs.zen-browser.packages."${system}".specific
     zsh
+    bat
+    ranger
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -76,13 +78,13 @@
       shellAliases = {
         ll = "ls -l";
         update = "~/mysystem/nixos-rebuild.sh";
+        cat = "bat";
       };
       history.size = 10000;
       oh-my-zsh = {
         enable = true;
         plugins = [
           "git"
-          "thefuck"
         ];
         theme = "robbyrussell";
       };
