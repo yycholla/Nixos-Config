@@ -11,6 +11,14 @@
           shiftwidth = 0;
           tabstop = 2;
         };
+        filetree = {
+          neo-tree = {
+            enable = true;
+            setupOpts = {
+              enable_git_status = true;
+            };
+          };
+        };
         autopairs.nvim-autopairs.enable = true;
         theme = {
           enable = true;
@@ -29,6 +37,12 @@
         autocomplete.nvim-cmp.enable = true;
         lsp = {
           formatOnSave = true;
+        };
+        debugger = {
+          nvim-dap = {
+            enable = true;
+            ui.enable = true;
+          };
         };
         languages = {
           enableLSP = true;
