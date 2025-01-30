@@ -20,6 +20,7 @@
     oh-my-zsh
     oh-my-posh
     inputs.zen-browser.packages."${system}".specific
+    zsh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
