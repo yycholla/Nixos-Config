@@ -28,7 +28,7 @@
 
   fonts.fontDir.enable = true;
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.nushell;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -106,13 +106,13 @@
     isNormalUser = true;
     description = "Colin Hanway";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.nushell;
     # packages = with pkgs; [
     #  thunderbird
     #];
   };
 
   # Install firefox.
-  programs.zsh.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
