@@ -24,6 +24,8 @@
     "flakes"
   ];
 
+  fonts.fontDir.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -137,6 +139,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  fonts.packages = with pkgs; [
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+  ];
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -145,8 +151,10 @@
     rofi-wayland
     swww
     pkgs.home-manager
+    pkgs.hyprpanel
     pkgs.alejandra
     stremio
+    vscode
   ];
   environment.variables.EDITOR = "nvim";
 

@@ -4,7 +4,7 @@
 set -e
 
 # edit config
-nvim ./nixos/configuration.nix
+nvim ~/mysystem/configuration.nix
 
 # cd config dir
 pushd ~/mysystem

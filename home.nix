@@ -72,13 +72,15 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-  programs.git = {
-    enable = true;
-    userName = "yycholla";
-    userEmail = "hanway.colin@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-      credential.helper = "oauth";
+  programs = {
+    git = {
+      enable = true;
+      userName = "yycholla";
+      userEmail = "hanway.colin@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+        credential.helper = "oauth";
+      };
     };
   };
   # Let Home Manager install and manage itself.
