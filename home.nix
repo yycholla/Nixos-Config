@@ -99,6 +99,9 @@
     kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
+      settings = {
+        shell = ".";
+      };
     };
   };
   # Catpussy thing
