@@ -30,6 +30,7 @@
       modules = [
         nvf.nixosModules.default
         ./configuration.nix
+
         catppuccin.nixosModules.catppuccin
         {
           home-manager.useGlobalPkgs = true;
