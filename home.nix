@@ -108,7 +108,7 @@
       enable = true;
       themeFile = "Catppuccin-Mocha";
       settings = {
-        shell = ".";
+        shell = "nu";
       };
     };
   };
