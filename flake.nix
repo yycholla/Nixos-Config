@@ -6,7 +6,6 @@
     catppuccin.url = "github:catppuccin/nix";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
-    # obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
 
     nvf.url = "github:notashelf/nvf";
 
@@ -23,7 +22,6 @@
     zen-browser,
     hyprpanel,
     nvf,
-    #obsidian-nvim,
     ...
   } @ inputs: {
     nixosConfigurations.yycholla-nix = nixpkgs.lib.nixosSystem {
