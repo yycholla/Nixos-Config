@@ -19,6 +19,9 @@
             };
           };
         };
+        binds = {
+          cheatsheet.enable = true;
+        };
         autopairs.nvim-autopairs.enable = true;
         theme = {
           enable = true;
