@@ -69,26 +69,34 @@
         credential.helper = "oauth";
       };
     };
-    zsh = {
+    nushell = {
       enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-
       shellAliases = {
         ll = "ls -l";
         update = "~/mysystem/nixos-rebuild.sh";
         cat = "bat";
       };
-      history.size = 10000;
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git"
-        ];
-        theme = "robbyrussell";
-      };
     };
+    # zsh = {
+    #   enable = true;
+    #   enableCompletion = true;
+    #   autosuggestion.enable = true;
+    #   syntaxHighlighting.enable = true;
+    #
+    #   shellAliases = {
+    #     ll = "ls -l";
+    #     update = "~/mysystem/nixos-rebuild.sh";
+    #     cat = "bat";
+    #   };
+    #   history.size = 10000;
+    #   oh-my-zsh = {
+    #     enable = true;
+    #     plugins = [
+    #       "git"
+    #     ];
+    #     theme = "robbyrussell";
+    #   };
+    # };
     waybar = {
       settings = {
         mainBar = {
