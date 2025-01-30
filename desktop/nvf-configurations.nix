@@ -1,4 +1,3 @@
-# arb
 {
   pkgs,
   lib,

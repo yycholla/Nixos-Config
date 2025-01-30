@@ -4,7 +4,6 @@
     git
     gh
     networkmanagerapplet
-    catppuccin
     waybar
     kitty
     rofi-wayland
