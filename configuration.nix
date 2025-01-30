@@ -112,6 +112,7 @@
   };
 
   # Install firefox.
+  programs.zsh.enable = true;
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;

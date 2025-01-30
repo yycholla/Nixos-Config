@@ -67,6 +67,26 @@
         credential.helper = "oauth";
       };
     };
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+
+      shellAliases = {
+        ll = "ls -l";
+        update = "~/mysystem/nixos-rebuild.sh";
+      };
+      history.size = 10000;
+      #ohMyZsh = {
+      #  enable = true;
+      #  plugins = [
+      #    "git"
+      #    "thefuck"
+      #  ];
+      #  theme = "robbyrussell";
+      #};
+    };
   };
   # Catpussy thing
   catppuccin = {
