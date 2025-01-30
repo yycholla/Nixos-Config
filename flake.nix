@@ -8,11 +8,7 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     # obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.obsidian-nvim.follows = "obsidian-nvim";
-    };
+    nvf.url = "github:notashelf/nvf";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,18 +26,12 @@
     #obsidian-nvim,
     ...
   } @ inputs: {
-    packages."x86_64-linux".default =
-      (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [./nvf-configurations.nix];
-      })
-      .neovim;
-
     nixosConfigurations.yycholla-nix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
 
       modules = [
+        nvf.nixosModules.default
         ./configuration.nix
         catppuccin.nixosModules.catppuccin
         {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
