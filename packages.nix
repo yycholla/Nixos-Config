@@ -3,6 +3,7 @@
     #  neovim
     git
     gh
+    networkmanagerapplet
     waybar
     kitty
     rofi-wayland
