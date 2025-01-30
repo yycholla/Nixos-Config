@@ -7,12 +7,16 @@
     enable = true;
     settings = {
       vim = {
+        options = {
+          shiftwidth = 0;
+          tabstop = 2;
+        };
         autopairs.nvim-autopairs.enable = true;
         theme = {
           enable = true;
           name = "catppuccin";
           style = "mocha";
-          transparent = true;
+          transparent = false;
         };
 
         statusline = {
