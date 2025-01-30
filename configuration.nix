@@ -23,6 +23,7 @@
     "nix-command"
     "flakes"
   ];
+  environment.systemPackages = with pkgs; import ./packages.nix {inherit pkgs;};
 
   fonts.fontDir.enable = true;
 
@@ -142,19 +143,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term
-  ];
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-    gh
-    kitty
-    rofi-wayland
-    swww
-    pkgs.home-manager
-    pkgs.hyprpanel
-    pkgs.alejandra
-    stremio
-    vscode
   ];
   environment.variables.EDITOR = "nvim";
 
