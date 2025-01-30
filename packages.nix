@@ -13,5 +13,6 @@
     stremio
     vscode
     hwinfo
+    nushell
   ];
 }
