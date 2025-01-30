@@ -11,5 +11,6 @@
     pkgs.alejandra
     stremio
     vscode
+    hwinfo
   ];
 }
