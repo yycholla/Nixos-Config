@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     catppuccin.url = "github:catppuccin/nix";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +17,7 @@
     catppuccin,
     home-manager,
     zen-browser,
+    hyprpanel,
     ...
   } @ inputs: {
     nixosConfigurations.yycholla-nix = nixpkgs.lib.nixosSystem {
