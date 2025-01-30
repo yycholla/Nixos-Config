@@ -62,27 +62,25 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-    displayManager.gdm = {
+  services = {
+    xserver = {
       enable = true;
-      wayland = true;
+      videoDrivers = ["nvidia"];
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
+      # Set keyboard type
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    # Enable CUPS to print documents.
+    printing = {
+      enable = true;
     };
   };
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -108,14 +106,13 @@
     isNormalUser = true;
     description = "Colin Hanway";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    # packages = with pkgs; [
+    #  thunderbird
+    #];
   };
 
   # Install firefox.
   programs.zsh.enable = true;
-  programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
