@@ -33,13 +33,15 @@
 
         catppuccin.nixosModules.catppuccin
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.backupFileExtension = "HMBackup";
-          home-manager.useUserPackages = true;
-          home-manager.users.yycholla.imports = [
-            ../home.nix
-            catppuccin.homeManagerModules.catppuccin
-          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            backupFileExtension = "HMBackup";
+            useUserPackages = true;
+            users.yycholla = {
+              imports = [../home.nix catppuccin.homeManagerModules.catppuccin];
+            };
+          };
+
           home-manager.extraSpecialArgs = {
             inherit inputs;
             system = "x86_64-linux";

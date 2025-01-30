@@ -26,6 +26,7 @@
     "nix-command"
     "flakes"
   ];
+  catppuccin.enable = true;
 
   fonts.fontDir.enable = true;
 
