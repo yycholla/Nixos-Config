@@ -96,6 +96,10 @@
         };
       };
     };
+    kitty = {
+      enable = true;
+      themeFile = "Catppuccin-Mocha";
+    };
   };
   # Catpussy thing
   catppuccin = {
