@@ -21,7 +21,6 @@
       nix.enable = true;
       ts.enable = true;
       java.enable = true;
-      js.enable = true;
       go.enable = true;
       python.enable = true;
     };

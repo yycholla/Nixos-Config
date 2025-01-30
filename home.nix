@@ -79,6 +79,7 @@
         ll = "ls -l";
         update = "~/mysystem/nixos-rebuild.sh";
         cat = "bat";
+        nvim = "nix run .";
       };
       history.size = 10000;
       oh-my-zsh = {
