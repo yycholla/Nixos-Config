@@ -11,6 +11,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
+    ./packages.nix
+    ./nvf-configurations.nix
   ];
 
   home-manager = {
@@ -23,7 +25,6 @@
     "nix-command"
     "flakes"
   ];
-  environment.systemPackages = with pkgs; import ./packages.nix {inherit pkgs;};
 
   fonts.fontDir.enable = true;
 
