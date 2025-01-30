@@ -26,6 +26,8 @@
           java.enable = true;
           go.enable = true;
           python.enable = true;
+          lua.enable = true;
+          markdown.enable = true;
         };
       };
     };
