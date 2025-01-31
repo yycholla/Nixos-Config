@@ -12,7 +12,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
     ../packages.nix
-    ./nvf-configurations.nix
+    ../nvf-configurations.nix
   ];
 
   home-manager = {

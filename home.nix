@@ -73,7 +73,7 @@
       enable = true;
       shellAliases = {
         ll = "ls -l";
-        update = "~/scripts/nixos-rebuild.sh";
+        updoot = "~/scripts/nixos-rebuild.sh";
         cat = "bat";
       };
     };
