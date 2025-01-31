@@ -32,13 +32,13 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/hypr/hyprland.conf" = dotfiles/hypr/hyprland.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
   };
 
   # Home Manager can also manage your environment variables through
