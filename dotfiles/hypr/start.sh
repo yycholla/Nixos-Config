@@ -8,13 +8,13 @@ swww-daemon &
 # nm-applet --indicator &
 systemctl --user enable --now waybar.service &
 # find bar app
-waybar &
+waybar -l off &
 
-if ["$HOSTNAME" = "yycholla-nixd"]; then
+if [ hyprctl monitors | grep -q "eDP-1"]; then
+  echo "Not on desktop, skipping wayvnc-headless"
+else
   echo "Starting wayvnc-headless"
   hyprctl output create headless vnc
   wayvnc 0.0.0.0 &
-  wayvncctl output set "vnc"
-else
-  echo "Not on desktop, skipping wayvnc-headless"
+  wayvncctl output-set "vnc"
 fi

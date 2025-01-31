@@ -123,6 +123,7 @@
     # if no cursor
     # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    HOSTNAME = "yycholla-nixd";
   };
   hardware = {
     graphics.enable = true;
@@ -146,7 +147,10 @@
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term
   ];
-  environment.variables.EDITOR = "nvim";
+  environment.variables = {
+    EDITOR = "nvim";
+    HOSTNAME = "yycholla-nixd";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -162,11 +166,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
+  networking.firewall = {
+    enable = false;
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

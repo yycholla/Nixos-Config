@@ -16,5 +16,7 @@
     hwinfo
     nushell
     wayvnc
+    rustc
+    cargo
   ];
 }
