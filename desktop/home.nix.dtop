@@ -1,3 +1,4 @@
+#
 {
   config,
   pkgs,
@@ -38,7 +39,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
   };
 
   # Home Manager can also manage your environment variables through
@@ -74,7 +74,7 @@
       enable = true;
       shellAliases = {
         ll = "ls -l";
-        update = "~/scripts/nixos-rebuild.sh";
+        update = "~/mysystem/nixos-rebuild.sh";
         cat = "bat";
       };
     };
