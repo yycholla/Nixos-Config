@@ -77,11 +77,6 @@
         variant = "";
       };
     };
-    xrdp = {
-      enable = true;
-      defaultWindowManager = "hyprland";
-      openFirewall = true;
-    };
     # Enable CUPS to print documents.
     printing = {
       enable = true;
