@@ -4,13 +4,7 @@
   system,
   inputs,
   ...
-}:
-{
-  imports = [
-    ./hypr/config.nix
-  ];
-}
-{
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "yycholla";
@@ -79,7 +73,7 @@
       enable = true;
       shellAliases = {
         ll = "ls -l";
-        update = "~/mysystem/nixos-rebuild.sh";
+        update = "~/scripts/nixos-rebuild.sh";
         cat = "bat";
       };
     };

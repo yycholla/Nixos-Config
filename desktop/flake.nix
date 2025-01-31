@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     nvf.url = "github:notashelf/nvf";
 

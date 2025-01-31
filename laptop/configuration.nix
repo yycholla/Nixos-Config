@@ -11,14 +11,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
-    ./packages.nix
-    ./nvf-configurations.nix
+    ../packages.nix
+    ../nvf-configurations.nix
   ];
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
-      yycholla = import ./home.nix;
+      yycholla = import ../home.nix;
     };
   };
   nix.settings.experimental-features = [
@@ -116,6 +116,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
   environment.sessionVariables = {
     # if no cursor
