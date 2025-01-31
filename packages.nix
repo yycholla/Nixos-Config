@@ -15,5 +15,6 @@
     vscode
     hwinfo
     nushell
+    wayvnc
   ];
 }
