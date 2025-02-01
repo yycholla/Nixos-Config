@@ -7,6 +7,7 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     hyprland.url = "github:hyprwm/Hyprland";
+    swww.url = "github:LGFae/swww";
 
     nvf.url = "github:notashelf/nvf";
 
@@ -20,33 +21,38 @@
     nixpkgs,
     catppuccin,
     home-manager,
-    zen-browser,
     nvf,
     ...
   } @ inputs: {
-    nixosConfigurations.yycholla-nixd = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+    nixosConfigurations = {
+      "yycholla-nixd" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-      modules = [
-        nvf.nixosModules.default
-        ./configuration.nix
+        specialArgs = {inherit inputs;};
 
-        catppuccin.nixosModules.catppuccin
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.users.yycholla = {
-            imports = [
-              ../home.nix
-              catppuccin.homeManagerModules.catppuccin
-            ];
-          };
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            system = "x86_64-linux";
-          };
-        }
-      ];
+        modules = [
+          ./configuration.nix
+
+          nvf.nixosModules.default
+          ./configuration.nix
+
+          catppuccin.nixosModules.catppuccin
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.users.yycholla = {
+              imports = [
+                ../home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+          }
+        ];
+      };
     };
   };
 }

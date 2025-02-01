@@ -7,10 +7,11 @@
 }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "yycholla";
-  home.homeDirectory = "/home/yycholla";
-
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home = {
+    username = "yycholla";
+    homeDirectory = "/home/yycholla";
+    stateVersion = "24.11"; # Please read the comment before changing.
+  };
 
   home.packages = with pkgs; [
     zip
@@ -32,7 +33,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -77,37 +77,30 @@
         update = "~/scripts/nixos-rebuild.sh";
         cat = "bat";
       };
-    };
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    #   autosuggestion.enable = true;
-    #   syntaxHighlighting.enable = true;
-    #
-    #   shellAliases = {
-    #     ll = "ls -l";
-    #     update = "~/mysystem/nixos-rebuild.sh";
-    #     cat = "bat";
-    #   };
-    #   history.size = 10000;
-    #   oh-my-zsh = {
-    #     enable = true;
-    #     plugins = [
-    #       "git"
-    #     ];
-    #     theme = "robbyrussell";
-    #   };
-    # };
-    waybar = {
-      settings = {
-        mainBar = {
-          layer = "top";
-        };
+      configFile = {
+        text = ''          '
+                    use std/util "path add"
+                    $env.config.buffer_editor = "nvim"
+                    path add "/home/yycholla/.cargo/bin"
+                    $env.config.show_banner = false
+                    mkdir ($nu.data-dir | path join "vendor/autoload")
+                    starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+                    source ~/Nixos-Config/dotfiles/nushell/catppuccin_machiato.nu
+
+                    pokeget random --hide-name | fastfetch --file-raw -
+        '';
       };
+      envFile = {
+      };
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
     };
     kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
+      font.name = "JetBrains Mono";
       settings = {
         shell = "nu";
       };

@@ -67,15 +67,37 @@
     xserver = {
       enable = true;
       # videoDrivers = ["nvidia"];
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
+      displayManager = {
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
       };
       # Set keyboard type
       xkb = {
         layout = "us";
         variant = "";
       };
+    };
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
+    };
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "yycholla";
+      };
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
     };
     # Enable CUPS to print documents.
     printing = {
@@ -84,20 +106,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -145,6 +154,8 @@
   # $ nix search wget
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka
+    nerd-fonts.fira-code
+    jetbrains-mono
     nerd-fonts.iosevka-term
   ];
   environment.variables = {

@@ -1,22 +1,44 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  environment.systemPackages = [
     #  neovim
-    git
-    gh
-    networkmanagerapplet
-    catppuccin
-    waybar
-    kitty
-    rofi-wayland
-    swww
+    pkgs.wget
+    pkgs.zip
+    pkgs.unzip
+    pkgs.gum
+    pkgs.rsync
+    pkgs.figlet
+    pkgs.vim
+    pkgs.xdg-user-dirs
+    pkgs.man-pages
+    pkgs.networkmanager
+    pkgs.python311
+    pkgs.git
+    pkgs.gh
+    pkgs.starship
+    pkgs.networkmanagerapplet
+    pkgs.catppuccin
+    pkgs.waybar
+    pkgs.kitty
+    pkgs.jetbrains-mono
+    pkgs.hyprpaper
+    pkgs.rofi-wayland
     pkgs.home-manager
     pkgs.alejandra
-    stremio
-    vscode
-    hwinfo
-    nushell
-    wayvnc
-    rustc
-    cargo
+    pkgs.fastfetch
+    pkgs.stremio
+    pkgs.vscode
+    pkgs.hwinfo
+    inputs.swww.packages.${pkgs.system}.swww
+    pkgs.nushell
+    pkgs.wayvnc
+    pkgs.rustc
+    pkgs.cargo
+    pkgs.gcc
+    pkgs.barrier
+    pkgs.carapace
   ];
 }
