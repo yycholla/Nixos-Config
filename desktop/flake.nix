@@ -7,6 +7,7 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     hyprland.url = "github:hyprwm/Hyprland";
+    pyprland.url = "github:hyprland-community/pyprland";
     swww.url = "github:LGFae/swww";
 
     nvf.url = "github:notashelf/nvf";
@@ -29,7 +30,6 @@
         system = "x86_64-linux";
 
         specialArgs = {inherit inputs;};
-
         modules = [
           ./configuration.nix
 

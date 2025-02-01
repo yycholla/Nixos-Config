@@ -15,8 +15,8 @@
     pkgs.xdg-user-dirs
     pkgs.man-pages
     pkgs.networkmanager
-    pkgs.python311
     pkgs.git
+    pkgs.pywal
     pkgs.gh
     pkgs.starship
     pkgs.networkmanagerapplet
@@ -33,6 +33,7 @@
     pkgs.vscode
     pkgs.hwinfo
     inputs.swww.packages.${pkgs.system}.swww
+    inputs.pyprland.packages.${pkgs.system}.pyprland
     pkgs.nushell
     pkgs.wayvnc
     pkgs.rustc
