@@ -10,60 +10,53 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
-    ../packages.nix
     ../nvf-configurations.nix
+    ../packages.nix
   ];
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      yycholla = import ../home.nix;
-    };
-  };
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-  catppuccin.enable = true;
 
   fonts.fontDir.enable = true;
 
-  users.defaultUserShell = pkgs.nushell;
+  users.defaultUserShell = pkgs.zsh;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "yycholla-nixd"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "yycholla-nixd";
+    networkmanager = {
+      enable = true;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/Denver";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
   # Enable the X11 windowing system.
   services = {
+    tailscale = {
+      enable = true;
+    };
     xserver = {
       enable = true;
       # videoDrivers = ["nvidia"];
@@ -77,6 +70,17 @@
       xkb = {
         layout = "us";
         variant = "";
+      };
+    };
+    fail2ban.enable = true;
+    openssh = {
+      enable = true;
+      ports = [22];
+      settings = {
+        X11Forwarding = true;
+        PasswordAuthentication = true;
+        UseDns = true;
+        PermitRootLogin = "prohibit-password";
       };
     };
     sunshine = {
@@ -103,6 +107,9 @@
     printing = {
       enable = true;
     };
+    lorri = {
+      enable = true;
+    };
   };
 
   # Enable sound with pipewire.
@@ -116,35 +123,34 @@
     isNormalUser = true;
     description = "Colin Hanway";
     extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.nushell;
-    # packages = with pkgs; [
-    #  thunderbird
-    #];
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
+  programs = {
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      xwayland.enable = true;
+    };
+    zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+      autosuggestions.enable = true;
+      ohMyZsh = {
+        enable = true;
+      };
+    };
+    starship = {
+      enable = true;
+    };
   };
   environment.sessionVariables = {
-    # if no cursor
-    # WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     HOSTNAME = "yycholla-nixd";
   };
   hardware = {
     graphics.enable = true;
-    # opengl.enable = true;
-    # nvidia = {
-    # modesetting.enable = true;
-    # powerManagement.enable = false;
-    # powerManagement.finegrained = false;
-    # open = false;
-    # nvidiaSettings = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # };
   };
 
   # Allow unfree packages
@@ -179,7 +185,7 @@
   # Open ports in the firewall.
 
   networking.firewall = {
-    enable = false;
+    enable = true;
   };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -6,7 +6,18 @@
   environment.systemPackages = [
     #  neovim
     pkgs.wget
+    pkgs.direnv
+    pkgs.sway
+    pkgs.stow
+    # pkgs.neovim
+    pkgs.lunarvim
+    pkgs.ghostty
+    pkgs.psmisc
     pkgs.zip
+    pkgs.python313
+    pkgs.python313Packages.pip
+    pkgs.nodejs
+    pkgs.btop
     pkgs.unzip
     pkgs.gum
     pkgs.rsync
@@ -18,6 +29,12 @@
     pkgs.git
     pkgs.pywal
     pkgs.gh
+    pkgs.zip
+    pkgs.xz
+    pkgs.unzip
+    pkgs.zsh
+    pkgs.bat
+    pkgs.ranger
     pkgs.starship
     pkgs.networkmanagerapplet
     pkgs.catppuccin

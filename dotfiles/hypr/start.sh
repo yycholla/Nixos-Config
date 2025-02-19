@@ -4,8 +4,8 @@
 swww-daemon &
 pypr &
 # Set Wallpaper
-# ~/Nixos-Config/dotfiles/hypr/swww/randomize.sh ~/Wallpapers/Hor/ &
-# ~/Nixos-Config/dotfiles/hypr/swww/randomizev.sh ~/Wallpapers/Hor/ &
+~/Nixos-Config/dotfiles/hypr/swww/randomize.sh ~/Wallpapers/Hor/ &
+~/Nixos-Config/dotfiles/hypr/swww/randomizev.sh ~/Wallpapers/Hor/ &
 # Network manager (Install by adding pkgs.networkmanagerapplet to packages)
 # nm-applet --indicator &
 systemctl --user enable --now waybar.service &

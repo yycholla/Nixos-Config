@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   system,
   inputs,
   ...
@@ -13,17 +11,8 @@
     stateVersion = "24.11"; # Please read the comment before changing.
   };
 
-  home.packages = with pkgs; [
-    zip
-    xz
-    unzip
-    p7zip
-    oh-my-zsh
-    oh-my-posh
+  home.packages = [
     inputs.zen-browser.packages."${system}".specific
-    zsh
-    bat
-    ranger
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -61,17 +50,8 @@
     EDITOR = "nvim";
   };
   programs = {
-    git = {
-      enable = true;
-      userName = "yycholla";
-      userEmail = "hanway.colin@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-        credential.helper = "oauth";
-      };
-    };
     nushell = {
-      enable = true;
+      enable = false;
       shellAliases = {
         ll = "ls -l";
         update = "~/scripts/nixos-rebuild.sh";
@@ -93,12 +73,8 @@
       envFile = {
       };
     };
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
     kitty = {
-      enable = true;
+      enable = false;
       themeFile = "Catppuccin-Mocha";
       font.name = "JetBrains Mono";
       settings = {
@@ -107,11 +83,6 @@
     };
   };
   # Catpussy thing
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "blue";
-  };
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager.enable = false;
 }

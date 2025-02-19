@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [[ $# -lt 1 ]] || [[ ! -d $1   ]]; then
 	echo "Usage:
 	$0 <Wallpaper dir>"
@@ -18,7 +19,12 @@ while true; do
 		done \
 		| sort -n | cut -d':' -f2- \
 		| while read -r img; do
+      export SWWW_WALPAPER=$img
+      wal -i -n "$img"
 			swww img -o vnc "$img"
+      swww clear-cache
+      pkill waybar
+      waybar &>/dev/null & disown
 			sleep $INTERVAL
 		done
 done
